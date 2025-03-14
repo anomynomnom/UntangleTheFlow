@@ -20,8 +20,11 @@ This script enables users to generate synthetic **origin-destination (OD) flow d
 - `sf_network.rds`: An `sf` object containing the street network.
 - `local_node_dist_mat.rds`: A  `data.table` containing network distances between all nodes in the street network.
 
-Key configurable parameters:
 
+https://zenodo.org/records/15025399?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjIwYzY5NzgwLTRlN2EtNGI3Yy04OGJkLWU2NzNmMTdlMWEyYiIsImRhdGEiOnt9LCJyYW5kb20iOiIzMDY0NGZhN2ViNzkwZmExMDE1NzQxZDA0NmRmN2E2MiJ9.FZxejH2itkRpWa-T4MRH62ZDfkAu8QtiQksBd0pzQ7rlRiXnLTkzo3kZbblljaiGSUUBA7leOD-utgRJ_PrUXw
+
+Key configurable parameters:
+<!--
 - `num_min_length` & `num_max_length`: Defines the boundaries for flow lengths within each cluster, depending on the approximate radius of the convex hull of the street network section.
 - `num_min_flows` & `num_max_flows`: Specifies the range for the number of flows per cluster.
 - `num_min_clusters` & `num_max_clusters`: Determines the overall number of clusters.
@@ -54,4 +57,5 @@ A mini-experiment evaluates clustering performance using **HDBSCAN**:
 ### Prerequisites
 Ensure the required R packages are installed:
 ```r
-install.packages(c("sf", "hdbscan", "ggplot2", "pacmap"))
+install.packages(c("sf", "hdbscan", "ggplot2", "pacmap"))-->
+
