@@ -38,4 +38,3 @@ lapply(char_dirs, function(x){
 })
 
 
-
