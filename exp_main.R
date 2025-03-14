@@ -21,7 +21,7 @@ int_n_samples <- 10
   # "chebyshev" corresponds to "chebyshev_euclid"
   # "network" = corresponds to "manhattan_network"
 char_dist_measure <- "chebyshev"
-path_flows <- here("data", "experiment")
+path_flows <- here("data", "synthetic_data_experiment")
 char_dirs <- list.dirs(path_flows, recursive = FALSE)
 
 

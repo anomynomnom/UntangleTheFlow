@@ -9,10 +9,11 @@ dt_dist_mat <- read_rds(here("input", "local_node_dist_mat.rds"))
 num_avg_radius <- main_get_avg_radius_chull(sf_convex_hull)
 num_min_length <- num_avg_radius/6
 num_max_length <- num_avg_radius*0.8
-int_n_clusters <- sample(50:100, 1)
+int_min_n_cl <- 50
+int_max_n_cl <- 100
+int_n_clusters <- sample(int_min_n_cl:int_max_n_cl, 1)
 int_min_cl_size <- 15
 int_max_cl_size <- 20
-num_ratio_fd <- 0.7
 ################################################################################
 # Main
 ################################################################################
@@ -20,13 +21,12 @@ sf_clusters <- main_create_synth_dataset(int_n_clusters = int_n_clusters,
                                          num_avg_radius = num_avg_radius,
                                          int_min_cl_size = int_min_cl_size,
                                          int_max_cl_size = int_max_cl_size,
-                                         num_ratio_fd = num_ratio_fd,
                                          num_var_angle_direction = num_var_angle_direction,
                                          num_min_length = num_min_length,
                                          num_max_length = num_max_length)
 
 char_id <- uuid::UUIDgenerate(use.time = TRUE)
-path <- here("data", char_id) 
+path <- here("data", "synthetic_data_generated", char_id) 
 if(!dir.exists(here(path))){
   dir.create(path, recursive = TRUE)
 } else {

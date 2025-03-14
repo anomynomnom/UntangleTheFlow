@@ -22,7 +22,7 @@ char_config <- paste0(int_k, "_",
   # "euclid" corresponds to "manhattan_euclid"
   # "chebyshev" corresponds to "chebyshev_euclid"
   # "network" = corresponds to "manhattan_network"
-char_dist_measure <- "network"
+char_dist_measure <- "chebyshev"
 char_file <- paste0("cvi_h_dbscan_snn_", char_config, ".rds")
 path_res <- here("res_exp_intermediate", char_dist_measure)
 char_dirs <- list.dirs(path_res, recursive = FALSE)

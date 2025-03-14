@@ -111,7 +111,7 @@ helper_snap_single_point_to_network <- function(sf_point, sf_network) {
 
 # Documentation: create_ellipse_with_points
 # Usage: create_ellipse_with_points(sf_network, num_center_point, num_width_m,
-# num_height_m, int_n, num_ratio_fd)
+# num_height_m, int_n)
 # Description: 
 # 1. Gets a random road segment
 # 2. Draws an ellipse around the center-point of that road segment
@@ -120,7 +120,6 @@ helper_snap_single_point_to_network <- function(sf_point, sf_network) {
 # form the largest connected network
 # 5. Samples n points on the corresponding road segments 
 # Args/Options: sf_network, num_center_point, num_width_m, num_height_m, int_n, 
-# num_ratio_fd
 # Returns: sf-dataframe
 # Output: ...
 # Action: ...
@@ -128,8 +127,7 @@ create_ellipse_with_points <- function(sf_network,
                                        num_center_point, 
                                        num_width_m, 
                                        num_height_m, 
-                                       int_n,
-                                       num_ratio_fd) {
+                                       int_n) {
   
   
   # Draw the ellipse 
@@ -277,7 +275,6 @@ main_create_synth_dataset <- function(int_n_clusters,
                                       num_avg_radius,
                                       int_min_cl_size,
                                       int_max_cl_size,
-                                      num_ratio_fd,
                                       num_var_angle_direction,
                                       num_min_length,
                                       num_max_length) {
@@ -306,8 +303,7 @@ main_create_synth_dataset <- function(int_n_clusters,
                                                  num_center_point = num_center_point,
                                                  num_width_m = num_width_m,
                                                  num_height_m = num_height_m,
-                                                 int_n = int_n_points,
-                                                 num_ratio_fd = num_ratio_fd)
+                                                 int_n = int_n_points)
     
     sf_points_o_cl <- sf_points_o_cl %>%
       rename("origin_point_id" = "point_id",
@@ -320,24 +316,7 @@ main_create_synth_dataset <- function(int_n_clusters,
     # Get one of the origin points...
     sf_startpoint <- sample(sf_points_o_cl$origin_geom, 1)
     num_length <- sample(num_min_length:num_max_length, 1)
-    # list_degree_dist <- helper_get_degree_furthest_direction(sf_convex_hull, sf_startpoint)
-    # # ... and get the distance and direction of the furthest away point
-    # num_dist_farthest_dir <- list_degree_dist$distance
-    # num_angle_farthest_dir <- list_degree_dist$degree
-    # num_angle_min <- num_angle_farthest_dir * (1 - num_var_angle_direction)
-    # num_angle_max <- num_angle_farthest_dir * (1 + num_var_angle_direction)
-    # num_angle <- runif(1, 
-    #                    min = min(num_angle_min, num_angle_max), 
-    #                    max = max(num_angle_min, num_angle_max))
-    # 
-    # num_length <- sample(num_min_length:(num_ratio_fd*num_dist_farthest_dir), 1) %>% 
-    #   as.numeric
-    # ...and use it as startpoint for the determination of destination points
-    # sf_endpoint <- sf_startpoint + c(num_length * cos(num_angle),
-    #                                  num_length * sin(num_angle))
-    # st_crs(sf_endpoint) <- st_crs(sf_network)
-    # # # Map destination point on road network 
-    # sf_endpoint <- helper_snap_single_point_to_network(sf_endpoint, sf_network)
+
     sf_endpoint <- get_endpoint_within_dist(sf_network, sf_startpoint, dt_dist_mat, num_length)
     # Sample destination points
     sf_points_d_cl <- create_ellipse_with_points(sf_network = sf_network,
@@ -345,8 +324,7 @@ main_create_synth_dataset <- function(int_n_clusters,
                                                    sf_endpoint),
                                                  num_width_m = num_width_m,
                                                  num_height_m = num_height_m,
-                                                 int_n = int_n_points,
-                                                 num_ratio_fd = num_ratio_fd)  
+                                                 int_n = int_n_points)  
     sf_points_d_cl <- sf_points_d_cl %>%
       rename("dest_point_id" = "point_id",
              "dest_id" = "id",

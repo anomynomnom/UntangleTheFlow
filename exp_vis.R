@@ -3,9 +3,9 @@ library(here)
 #################################################################################
 # Load data
 ################################################################################
-dt.euclid <- read_rds(here("res_exp_final", "old", "dt_euclid.rds"))
-dt.cheb <-  read_rds(here("res_exp_final", "old","dt_chebyshev.rds"))
-dt.network <-  read_rds(here("res_exp_final", "old","dt_network.rds"))
+dt.euclid <- read_rds(here("res_exp_final","dt_euclid.rds"))
+dt.cheb <-  read_rds(here("res_exp_final","dt_chebyshev.rds"))
+dt.network <-  read_rds(here("res_exp_final", "dt_network.rds"))
 dt.euclid$dist_measure <- "Manhattan-Euclidean"
 dt.cheb$dist_measure <- "Chebyshev-Euclidean"
 dt.network$dist_measure <- "Manhattan-Network"

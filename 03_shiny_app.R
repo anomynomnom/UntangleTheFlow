@@ -16,10 +16,10 @@ np <- import("numpy")
 #################################################################################
 # Load data
 ################################################################################
-char.dirs <- list.dirs("./data", full.names = FALSE, recursive = FALSE)
+char.dirs <- list.dirs(here("data", "synthetic_data_generated"), full.names = FALSE, recursive = FALSE)
 char.dirs
-char.data <- char.dirs[2]
-path.data <- here("data", char.data)
+char.data <- char.dirs[1]
+path.data <- here("data", "synthetic_data_generated", char.data)
 char.dist.measure <- "manhattan_euclid"
 int.id <- 1
 matrix.org.dist.mat <- np$load(here(path.data,  char.dist.measure, "dist_mat.npy")) %>%

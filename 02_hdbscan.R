@@ -121,10 +121,10 @@ calculate_distmat <- function(dist.measure,
 sf.network <- read_rds(here("input", "sf_network.rds"))
 dt.dist.mat <- read_rds(here("input", "local_node_dist_mat.rds"))
 char.dist.measure <- "manhattan_euclid" # further options: "chebyshev_euclid", "manhattan_network"
-char.dirs <- list.dirs("./data", full.names = FALSE, recursive = FALSE)
+char.dirs <- list.dirs(here("data", "synthetic_data_generated"), full.names = FALSE, recursive = FALSE)
 char.dirs
-char.data <- char.dirs[2]
-path.data <- here("data", char.data, char.dist.measure)
+char.data <- char.dirs[1]
+path.data <- here("data", "synthetic_data_generated", char.data, char.dist.measure)
 
 if(!dir.exists(here(path.data))){
   dir.create(path.data, recursive = TRUE)
@@ -132,7 +132,7 @@ if(!dir.exists(here(path.data))){
 
 path.python <- "/usr/bin/python3.8"
 path.pacmap.src.file <- here("src", "pacmap.py")
-sf.trips <- read_rds(here("data", char.data, "synthetic_flows.rds"))
+sf.trips <- read_rds(here("data", "synthetic_data_generated", char.data, "synthetic_flows.rds"))
 sf.trips$flow_id <- 1:nrow(sf.trips)
 int.id <- 1 # if you run pacmap several times on the same dataset
 df.coord <- data.frame(
