@@ -56,3 +56,11 @@ This script simply further processes the results to prepare for visualization. R
 
 ### Visualize experiment results (`exp_vis.R`)
 This script creates the boxplot from the paper, comparing the CVI results for all three algorithms and all three different distance measures, as well as the boxplot for all `hdbscan`-configurations. **Note:** If the experiment cannot be run, the second dataset from [Zenodo](https://zenodo.org/records/15025399?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjIwYzY5NzgwLTRlN2EtNGI3Yy04OGJkLWU2NzNmMTdlMWEyYiIsImRhdGEiOnt9LCJyYW5kb20iOiIzMDY0NGZhN2ViNzkwZmExMDE1NzQxZDA0NmRmN2E2MiJ9.FZxejH2itkRpWa-T4MRH62ZDfkAu8QtiQksBd0pzQ7rlRiXnLTkzo3kZbblljaiGSUUBA7leOD-utgRJ_PrUXw) (`experiment_results.zip`) can be extracted to `res_exp_final` to enable the visualizations.
+
+
+---
+## Requirements
+The files `R_requirements.txt` and `py_requirements.txt` list the `R` and `Python` packages, along with their respective versions, used in this project.  
+
+**Note:** To save files as `.npy` arrays in `R`, the `reticulate` package is required. Therefore, the user has to set up a Python virtual environment (`venv`).  
+

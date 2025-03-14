@@ -120,10 +120,10 @@ calculate_distmat <- function(dist.measure,
 ################################################################################
 sf.network <- read_rds(here("input", "sf_network.rds"))
 dt.dist.mat <- read_rds(here("input", "local_node_dist_mat.rds"))
-char.dist.measure <- "manhattan_euclid" # further options: "chebyshev_euclid", "manhattan_network"
+char.dist.measure <- "chebyshev_euclid" # further options: "chebyshev_euclid", "manhattan_network"
 char.dirs <- list.dirs(here("data", "synthetic_data_generated"), full.names = FALSE, recursive = FALSE)
 char.dirs
-char.data <- char.dirs[1]
+char.data <- char.dirs[2]
 path.data <- here("data", "synthetic_data_generated", char.data, char.dist.measure)
 
 if(!dir.exists(here(path.data))){
@@ -204,8 +204,6 @@ ggplot(df.long,
   scale_color_manual(values = viridis_pal) +
   scale_x_continuous(breaks = seq(2, 50, 1),  
                      labels = seq(2, 50, 1)) +
-                     #labels = ifelse(seq(2, 50, 1) %% 10 == 0, seq(2, 50, 1), ""))+
-  
   xlab("Minimum Cluster Size\n") +
   ylab("ARI") +
   theme_bw() +
@@ -214,7 +212,6 @@ ggplot(df.long,
     legend.position = "right",
     legend.title = element_blank(),
     legend.text = element_text(size = 14L),
-    #legend.spacing.x = unit(1.5, "cm"),  
     axis.text = element_text(size = 14L),
     axis.title = element_text(size = 16L),
     strip.text = element_text(size = 14L),

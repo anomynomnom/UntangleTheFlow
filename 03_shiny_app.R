@@ -18,9 +18,9 @@ np <- import("numpy")
 ################################################################################
 char.dirs <- list.dirs(here("data", "synthetic_data_generated"), full.names = FALSE, recursive = FALSE)
 char.dirs
-char.data <- char.dirs[1]
+char.data <- char.dirs[2]
 path.data <- here("data", "synthetic_data_generated", char.data)
-char.dist.measure <- "manhattan_euclid"
+char.dist.measure <- "chebyshev_euclid"
 int.id <- 1
 matrix.org.dist.mat <- np$load(here(path.data,  char.dist.measure, "dist_mat.npy")) %>%
   as.dist()
